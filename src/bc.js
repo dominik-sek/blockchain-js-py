@@ -42,6 +42,7 @@ class Transaction {
  * @method signTransaction
  * @memberof Transaction
  * @param {elliptic} signingKey klucz prywatny do podpisu transakcji
+ * @tutorial https://en.bitcoin.it/wiki/Secp256k1
  * @returns {void}
  */
     signTransaction(signingKey) {
