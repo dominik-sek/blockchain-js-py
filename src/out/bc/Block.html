@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Transaction</title>
+    <title>JSDoc: Class: Block</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Transaction</h1>
+    <h1 class="page-title">Class: Block</h1>
 
     
 
@@ -28,9 +28,9 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>Transaction<span class="signature">(fromAddress, toAddress, amount, timestamp)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>Block<span class="signature">(minerAddress, timestamp, previousHash, hash, nonce, transactions)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">Reprezentuje Transakcje</div>
+            <div class="class-description">Reprezentuje Blok</div>
         
     
 </header>
@@ -45,7 +45,7 @@
     
 
     
-    <h4 class="name" id="Transaction"><span class="type-signature"></span>new Transaction<span class="signature">(fromAddress, toAddress, amount, timestamp)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Block"><span class="type-signature"></span>new Block<span class="signature">(minerAddress, timestamp, previousHash, hash, nonce, transactions)</span><span class="type-signature"></span></h4>
     
 
     
@@ -85,7 +85,7 @@
 
         <tr>
             
-                <td class="name"><code>fromAddress</code></td>
+                <td class="name"><code>minerAddress</code></td>
             
 
             <td class="type">
@@ -101,53 +101,7 @@
 
             
 
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>toAddress</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>amount</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
+            <td class="description last">adres górnika który wykopał blok</td>
         </tr>
 
     
@@ -160,6 +114,29 @@
             <td class="type">
             
                 
+<span class="param-type">timestamp</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">czas wykopu bloku</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>previousHash</code></td>
+            
+
+            <td class="type">
+            
+                
 <span class="param-type">string</span>
 
 
@@ -170,7 +147,76 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last">hash poprzedniego bloku</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>hash</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">hash bloku</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>nonce</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">number used only once, uzywana w celu znalezienia hashu</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>transactions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">transakcje bloku</td>
         </tr>
 
     
@@ -211,7 +257,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="bc.js.html">bc.js</a>, <a href="bc.js.html#line22">line 22</a>
+        <a href="bc.js.html">bc.js</a>, <a href="bc.js.html#line158">line 158</a>
     </li></ul></dd>
     
 
@@ -267,7 +313,7 @@
     
 
     
-    <h4 class="name" id=".calculateHash"><span class="type-signature">(static) </span>calculateHash<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+    <h4 class="name" id=".areTransactionsValid"><span class="type-signature">(static) </span>areTransactionsValid<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
     
 
     
@@ -275,7 +321,7 @@
 
 
 <div class="description">
-    Metoda obliczająca hash transakcji
+    metoda sprawdzająca poprawność transakcji w bloku
 </div>
 
 
@@ -319,7 +365,117 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="bc.js.html">bc.js</a>, <a href="bc.js.html#line30">line 30</a>
+        <a href="bc.js.html">bc.js</a>, <a href="bc.js.html#line194">line 194</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    true jeśli transakcje są poprawne
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".calculateHash"><span class="type-signature">(static) </span>calculateHash<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Metoda obliczająca hash bloku
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="bc.js.html">bc.js</a>, <a href="bc.js.html#line169">line 169</a>
     </li></ul></dd>
     
 
@@ -377,7 +533,7 @@
     
 
     
-    <h4 class="name" id=".isTransactionValid"><span class="type-signature">(static) </span>isTransactionValid<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    <h4 class="name" id=".proofOfWork"><span class="type-signature">(static) </span>proofOfWork<span class="signature">(difficulty)</span><span class="type-signature"></span></h4>
     
 
     
@@ -385,117 +541,7 @@
 
 
 <div class="description">
-    Metoda sprawdzająca poprawność transakcji
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="bc.js.html">bc.js</a>, <a href="bc.js.html#line58">line 58</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    true jeśli transakcja jest poprawna
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id=".signTransaction"><span class="type-signature">(static) </span>signTransaction<span class="signature">(signingKey)</span><span class="type-signature"> &rarr; {void}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Metoda podpisująca transakcję
+    Algorytm proof of work
 </div>
 
 
@@ -531,13 +577,13 @@
 
         <tr>
             
-                <td class="name"><code>signingKey</code></td>
+                <td class="name"><code>difficulty</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">elliptic</span>
+<span class="param-type">int</span>
 
 
             
@@ -547,7 +593,7 @@
 
             
 
-            <td class="description last">klucz prywatny do podpisu transakcji</td>
+            <td class="description last">poziom trudności wykopania bloku, np. 2 oznacza, że górnik musi znaleźć nonce taki, że hash po ponownym obliczeniu zaczyna się od '0' * difficulty</td>
         </tr>
 
     
@@ -588,18 +634,11 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="bc.js.html">bc.js</a>, <a href="bc.js.html#line40">line 40</a>
+        <a href="bc.js.html">bc.js</a>, <a href="bc.js.html#line180">line 180</a>
     </li></ul></dd>
     
 
     
-    <dt class="tag-tutorial">Tutorials:</dt>
-    <dd class="tag-tutorial">
-        <ul>
-            <li><em class="disabled">Tutorial: https://en.bitcoin.it/wiki/Secp256k1</em></li>
-        </ul>
-    </dd>
-    
 
     
 
@@ -620,24 +659,6 @@
 
 
 
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">void</span>
-
-
-    </dd>
-</dl>
-
-    
 
 
 
@@ -665,7 +686,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Wed Feb 16 2022 13:25:12 GMT+0100 (czas środkowoeuropejski standardowy)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Wed Feb 16 2022 13:27:46 GMT+0100 (czas środkowoeuropejski standardowy)
 </footer>
 
 <script> prettyPrint(); </script>

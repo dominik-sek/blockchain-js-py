@@ -18,6 +18,7 @@ let intervals = [];
 
 /**
  * Funkcja tworząca górników
+ * @static
  * @function createMiners
  * @example createMiners(3)
  * @param {int} numberOfMiners ilość górników do utworzenia
@@ -39,6 +40,7 @@ function createMiners(numberOfMiners){
 
 /**
  * Funkcja generująca transakcje
+ * @static
  * @function generateTransaction
  * @returns {Transaction} transkacja do dodania do bloku
  */
@@ -77,6 +79,7 @@ function generateTransaction(){
  * Funkcja tworząca interwały górników
  * 
  * @function startMining
+ * @static
  * @example startMining(3) 
  * @param {int} iterationNumber liczba iteracji do wykonania = ilość bloków w blockchainie po których symulacja zostanie zatrzymana
  */
@@ -103,8 +106,8 @@ async function startMining(iterationNumber){
 
 /**
  * Funkcja zatrzymująca symulację oraz wypisująca w konosli informacje o blockchainie oraz górnikach
+ * @static
  * @function stopMining
- * 
  * @example stopMining()
  * @returns {void}
  */
