@@ -39,7 +39,7 @@ async function startMining(){
     // dla każdego górnika ustawiamy interwał który pozwoli na opóźnienie kopania bloku w zależności od jego mocy symulując w pewnym stopniu asynchroniczność
 
     for(let i = 0; i < miners.length; i++){
-        // blockchain.addTransaction(generateTransaction()); 
+
         intervals[i] = setInterval(()=>blockchain.mineBlock(miners[i].publicAddress,meshNetwork, miners[i], iterationNumber)
                                                                 .then(blockchain.addTransaction(generateTransaction()))
                                                                 .catch(()=>{stopMining()}),
