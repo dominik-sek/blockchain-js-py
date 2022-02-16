@@ -181,7 +181,7 @@ class Block {
  * Algorytm proof of work
  * @method proofOfWork
  * @memberof Block
- * @param {int} difficulty - poziom trudności wykopania bloku, np. 2 oznacza, że górnik musi znaleźć nonce taki, że hash po ponownym obliczeniu zaczyna się od '0' * difficulty 
+ * @param {int} difficulty - poziom trudności wykopania bloku, np. 2 oznacza, że górnik musi znaleźć nonce taki, że hash po ponownym obliczeniu zaczyna się od '0' * difficulty
  */
     proofOfWork(difficulty) {
 
@@ -229,11 +229,21 @@ class Blockchain {
      * @method createGenesisBlock
      * @memberof Blockchain
      * @returns {Block} blok genesis
-     * 
-     * @memberOf Blockchain
-        */
+     * */
     createGenesisBlock() {
         return new Block("SYSTEM", this.getDate(), [] , "0");
+    }
+
+    /**
+     * Metoda usuwająca blok z blockchaina
+     * @method popAnyBlock
+     * @memberof Blockchain
+     * @returns {Array} blockchain
+     * */
+    popAnyBlock(blockIndex){
+        if(blockIndex < 0 || blockIndex >= this.chain.length) throw new Error ("Block index out of range");
+         this.chain.splice(blockIndex, 1);
+        return this.chain;
     }
 
     /**
@@ -333,18 +343,13 @@ class Blockchain {
      * @param {Miner} miner 
      * @param {int} howManyIterations 
      * @returns {void} zwraca resolve jeśli blok został wykopany pomyślnie
-     * @returns {void} zwraca reject jeśli blok ilość bloków znajdujących się w blockchainie jest większa niż @param {int} howManyIterations
+     * @returns {void} zwraca reject jeśli blok ilość bloków znajdujących się w blockchainie jest większa niż howManyIterations
      */
     mineBlock(address, meshNetwork, miner, howManyIterations) {
         console.log(`Miner ${miner.id} with power ${miner.power} is mining block ${this.chain.length}`);
         return new Promise((resolve, reject) => {
             if (this.chain.length === howManyIterations) {
-
-                console.log("Blockchain: ");
-                for (var i = 0; i < this.chain.length; i++) {
-                    console.log(this.chain[i]);
-                }
-
+                this.showBlockchain();
                 reject();
             }
             const reward = new Transaction("SYSTEM", address, this.miningReward);
@@ -365,6 +370,13 @@ class Blockchain {
         });
 
 
+    }
+
+    showBlockchain(){
+        console.log("Blockchain: ");
+        for (var i = 0; i < this.chain.length; i++) {
+            console.log(this.chain[i]);
+        }
     }
 
     /**
