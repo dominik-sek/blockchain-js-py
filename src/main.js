@@ -72,6 +72,7 @@ function generateTransaction(){
     */
     let transaction = new Transaction(from.publicAddress, to.publicAddress, amount)
     transaction.signTransaction(ec.keyFromPrivate(from.privateAddress));
+    console.log(`Transaction generated from ${from.publicAddress} to ${to.publicAddress} with amount ${amount}\n`);
     return transaction;
 }
 
